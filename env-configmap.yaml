@@ -1,0 +1,7 @@
+# env-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-config
+data:
+  bootstrap-peer-id: QmXWy63V2UHxxnLMZBJ2iDTqRBxAvRrWKffpd63da8EbXb
