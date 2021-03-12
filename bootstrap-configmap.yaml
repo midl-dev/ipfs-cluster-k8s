@@ -44,7 +44,8 @@ data:
 
     id
     find /data/ipfs
-    mkdir -p /data/ipfs && chown -R ipfs /data/ipfs
+    # 1000:100 is ipfs user
+    mkdir -p /data/ipfs && chown -R 1000:100 /data/ipfs
     if [ -f /data/ipfs/config ]; then
       if [ -f /data/ipfs/repo.lock ]; then
         rm /data/ipfs/repo.lock
@@ -59,3 +60,4 @@ data:
     ipfs config --json Datastore.BloomFilterSize 1048576
     ipfs config Datastore.StorageMax 100GB
     find /data/ipfs
+    chown -R 1000:100 /data/ipfs
