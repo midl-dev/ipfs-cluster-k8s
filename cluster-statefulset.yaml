@@ -68,6 +68,7 @@ spec:
         - name: ipfs-cluster
           image: "ipfs/ipfs-cluster:latest"
           imagePullPolicy: IfNotPresent
+          command: ["sh", "/custom/entrypoint.sh"]
           envFrom:
             - configMapRef:
                 name: env-config
