@@ -51,13 +51,6 @@ spec:
             initialDelaySeconds: 30
             timeoutSeconds: 5
             periodSeconds: 15
-          readinessProbe:
-            httpGet:
-              path: /api/v0/id
-              port: api
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 5
           volumeMounts:
             - mountPath: /data/ipfs
               name: ipfs-storage
@@ -91,7 +84,7 @@ spec:
             - name: CLUSTER_MONITOR_PING_INTERVAL
               value: "3m"
             - name: SVC_NAME
-              value: $(CLUSTER_SVC_NAME)
+              value: ipfs-cluster
           ports:
             - name: api-http
               containerPort: 9094
@@ -108,13 +101,6 @@ spec:
             initialDelaySeconds: 5
             timeoutSeconds: 5
             periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /id
-              port: api-http
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 5
           volumeMounts:
             - name: cluster-storage
               mountPath: /data/ipfs-cluster
