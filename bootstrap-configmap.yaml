@@ -6,6 +6,7 @@ data:
   entrypoint.sh: |
     #!/bin/sh
     user=ipfs
+    id
 
     # This is a custom entrypoint for k8s designed to connect to the bootstrap
     # node running in the cluster. It has been set up using a configmap to
@@ -41,8 +42,9 @@ data:
     # This is a custom entrypoint for k8s designed to run ipfs nodes in an appropriate
     # setup for production scenarios.
 
+    id
+    find /data/ipfs
     mkdir -p /data/ipfs && chown -R ipfs /data/ipfs
-
     if [ -f /data/ipfs/config ]; then
       if [ -f /data/ipfs/repo.lock ]; then
         rm /data/ipfs/repo.lock
@@ -56,3 +58,4 @@ data:
     ipfs config --json Swarm.ConnMgr.HighWater 2000
     ipfs config --json Datastore.BloomFilterSize 1048576
     ipfs config Datastore.StorageMax 100GB
+    find /data/ipfs

@@ -132,6 +132,7 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: cluster-storage
+        namespace: ipfs
       spec:
         storageClassName: standard
         accessModes: ["ReadWriteOnce"]
@@ -140,6 +141,7 @@ spec:
             storage: 5Gi
     - metadata:
         name: ipfs-storage
+        namespace: ipfs
       spec:
         storageClassName: standard
         accessModes: ["ReadWriteOnce"]
