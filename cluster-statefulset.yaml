@@ -30,19 +30,13 @@ spec:
             - name: IPFS_FD_MAX
               value: "4096"
           ports:
-            - name: swarm
+            - name: ipfs-swarm
               protocol: TCP
               containerPort: 4001
-            - name: swarm-udp
-              protocol: UDP
-              containerPort: 4002
-            - name: api
+            - name: ipfs-admin-api
               protocol: TCP
               containerPort: 5001
-            - name: ws
-              protocol: TCP
-              containerPort: 8081
-            - name: http
+            - name: ipfs-gw
               protocol: TCP
               containerPort: 8080
           livenessProbe:
@@ -86,10 +80,10 @@ spec:
             - name: SVC_NAME
               value: ipfs-cluster
           ports:
-            - name: api-http
+            - name: cluster-admin-api
               containerPort: 9094
               protocol: TCP
-            - name: proxy-http
+            - name: cluster-gw
               containerPort: 9095
               protocol: TCP
             - name: cluster-swarm
