@@ -20,7 +20,7 @@ metadata:
   labels:
     app: ipfs-cluster
 spec:
-  type: Ingress
+  type: NodePort
   ports:
     - name: cluster-gw
       targetPort: proxy-http

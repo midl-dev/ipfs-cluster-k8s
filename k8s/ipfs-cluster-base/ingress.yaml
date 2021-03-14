@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ipfs-cluster-rpc
+spec:
+  backend:
+    serviceName: ipfs-gw
+    servicePort: cluster-gw
+---
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: ipfs-rpc-certificate
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: ipfs-rpc-backendconfig

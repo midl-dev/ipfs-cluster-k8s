@@ -1,0 +1,5 @@
+resources:
+- bootstrap-configmap.yaml
+- cluster-statefulset.yaml
+- service.yaml
+- ingress.yaml

@@ -1,0 +1,14 @@
+bases:
+  - ./ipfs-cluster-base
+
+namePrefix: ${kubernetes_namespace}-
+
+namespace: ${kubernetes_namespace}
+
+configMapGenerator:
+- name: ipfs-cluster-config
+  literals:
+  - BOOTSTRAP_PEER_ID="${bootstrap_peer_id}"
+
+patchesstrategicmerge:
+- static-ip-patch.yaml

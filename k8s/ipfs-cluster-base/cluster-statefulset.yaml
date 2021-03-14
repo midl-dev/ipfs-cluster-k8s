@@ -41,7 +41,7 @@ spec:
               containerPort: 8080
           livenessProbe:
             tcpSocket:
-              port: swarm
+              port: ipfs-swarm
             initialDelaySeconds: 30
             timeoutSeconds: 5
             periodSeconds: 15
@@ -58,13 +58,13 @@ spec:
           command: ["sh", "/custom/entrypoint.sh"]
           envFrom:
             - configMapRef:
-                name: env-config
+                name: ipfs-cluster-config
           env:
             - name: BOOTSTRAP_PEER_ID
               valueFrom:
                 configMapKeyRef:
-                  name: env-config
-                  key: bootstrap-peer-id
+                  name: ipfs-cluster-config
+                  key: BOOTSTRAP_PEER_ID
             - name: BOOTSTRAP_PEER_PRIV_KEY
               valueFrom:
                 secretKeyRef:
@@ -80,7 +80,7 @@ spec:
             - name: SVC_NAME
               value: ipfs-cluster
           ports:
-            - name: cluster-admin-api
+            - name: clu-admin-api
               containerPort: 9094
               protocol: TCP
             - name: cluster-gw
