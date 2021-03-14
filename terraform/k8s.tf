@@ -25,8 +25,8 @@ resource "kubernetes_secret" "ipfs_cluster_secret" {
     namespace = var.kubernetes_namespace
   }
   data = {
-    "cluster-secret": base64encode(var.cluster_secret)
-    "bootstrap-peer-priv-key": base64encode(var.bootstrap_peer_b64_encoded_priv_key)
+    "cluster-secret": var.cluster_secret
+    "bootstrap-peer-priv-key": var.bootstrap_peer_b64_encoded_priv_key
   }
 
   depends_on = [ kubernetes_namespace.ipfs_namespace ]
