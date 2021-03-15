@@ -1,3 +1,3 @@
-# IPFS cluster on GKE
+# IPFS cluster deployment on GKE
 
-Make IPFS behave more like S3 :)
+IPFS cluster with availability guarantees.
