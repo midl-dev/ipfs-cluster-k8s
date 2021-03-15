@@ -22,9 +22,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - name: cluster-api
-      targetPort: cluster-api
-      port: 9094
+    - name: cluster-gw
+      targetPort: cluster-gw
+      port: 9095
   selector:
     app: ipfs-cluster
 ---
@@ -37,8 +37,8 @@ metadata:
 spec:
   clusterIP: None
   ports:
-    - name: cluster-gw
-      targetPort: cluster-gw
-      port: 9095
+    - name: cluster-api
+      targetPort: cluster-api
+      port: 9094
   selector:
     app: ipfs-cluster

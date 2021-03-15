@@ -17,7 +17,9 @@ data:
       ipfs-cluster-service init
     fi
 
-    # accept api requests from outside
+    # accept gw api requests from outside (for ingress backend checks)
+    sed -i s~/ip4/127.0.0.1/tcp/9095~/ip4/0.0.0.0/tcp/9095~ /data/ipfs-cluster/service.json
+    # accept cluster api requests from outside (for readinessProbe checks)
     sed -i s~/ip4/127.0.0.1/tcp/9094~/ip4/0.0.0.0/tcp/9094~ /data/ipfs-cluster/service.json
     PEER_HOSTNAME=`cat /proc/sys/kernel/hostname`
 

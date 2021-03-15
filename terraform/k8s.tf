@@ -1,6 +1,7 @@
 locals {
   kubernetes_variables = { "project" : var.project,
        "kubernetes_namespace": var.kubernetes_namespace,
+       "kubernetes_pool_name": var.kubernetes_pool_name,
        "bootstrap_peer_id": var.bootstrap_peer_id,
        "rpc_public_hostname": var.rpc_public_hostname}
 }
@@ -51,6 +52,10 @@ EOK
 
 cat <<EOP > static-ip-patch.yaml
 ${templatefile("${path.module}/../k8s/static-ip-patch.yaml.tmpl", local.kubernetes_variables)}
+EOP
+
+cat <<EOP > nodepool.yaml
+${templatefile("${path.module}/../k8s/nodepool.yaml.tmpl", local.kubernetes_variables)}
 EOP
 
 kubectl apply -k .

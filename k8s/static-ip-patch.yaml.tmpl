@@ -15,8 +15,9 @@ spec:
   securityPolicy:
     name: "${kubernetes_namespace}-ipfs-rpc-filter"
   healthCheck:
-    checkIntervalSec: 15
-    port: 9094
+    checkIntervalSec: 30
+    timeoutSec: 30
+    port: 9095
     type: HTTP
     requestPath: /version
 ---
@@ -27,3 +28,10 @@ metadata:
 spec:
   domains:
   - ${rpc_public_hostname}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-api
+  annotations:
+    cloud.google.com/backend-config: '{"default": "${kubernetes_namespace}-ipfs-rpc-backendconfig"}'
