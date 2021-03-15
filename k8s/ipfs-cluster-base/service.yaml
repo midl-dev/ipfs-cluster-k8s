@@ -27,3 +27,18 @@ spec:
       port: 9094
   selector:
     app: ipfs-cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-cluster
+  labels:
+    app: ipfs-cluster
+spec:
+  clusterIP: None
+  ports:
+    - name: cluster-gw
+      targetPort: cluster-gw
+      port: 9095
+  selector:
+    app: ipfs-cluster
