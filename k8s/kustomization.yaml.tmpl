@@ -9,6 +9,7 @@ configMapGenerator:
 - name: ipfs-cluster-config
   literals:
   - BOOTSTRAP_PEER_ID="${bootstrap_peer_id}"
+  - KUBERNETES_NAMESPACE="${kubernetes_namespace}"
 
 patchesstrategicmerge:
 - static-ip-patch.yaml
