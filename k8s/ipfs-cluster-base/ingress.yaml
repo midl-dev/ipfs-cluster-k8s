@@ -4,8 +4,8 @@ metadata:
   name: ipfs-cluster-rpc
 spec:
   backend:
-    serviceName: ipfs-gw
-    servicePort: 9095
+    serviceName: ipfs-api
+    servicePort: 9094
 ---
 apiVersion: networking.gke.io/v1beta2
 kind: ManagedCertificate

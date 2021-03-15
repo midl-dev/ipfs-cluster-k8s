@@ -18,7 +18,7 @@ data:
     fi
 
     # accept api requests from outside
-    sed -i s~/ip4/127.0.0.1/tcp/9095~/ip4/0.0.0.0/tcp/9095~ /data/ipfs-cluster/service.json
+    sed -i s~/ip4/127.0.0.1/tcp/9094~/ip4/0.0.0.0/tcp/9094~ /data/ipfs-cluster/service.json
     PEER_HOSTNAME=`cat /proc/sys/kernel/hostname`
 
     grep -q ".*ipfs-cluster-0.*" /proc/sys/kernel/hostname
