@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: ipfs-cluster-rpc
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: ${kubernetes_namespace}-tezos-rpc-ip
-    networking.gke.io/managed-certificates: ${kubernetes_namespace}-node-rpc-certificate
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: ${kubernetes_namespace}-ipfs-rpc-ip
+    networking.gke.io/managed-certificates: ${kubernetes_namespace}-ipfs-rpc-certificate
+    #kubernetes.io/ingress.allow-http: "false"
 ---
 apiVersion: cloud.google.com/v1
 kind: BackendConfig
@@ -13,7 +13,12 @@ metadata:
   name: ipfs-rpc-backendconfig
 spec:
   securityPolicy:
-    name: "${kubernetes_namespace}-tezos-rpc-filter"
+    name: "${kubernetes_namespace}-ipfs-rpc-filter"
+  healthCheck:
+    checkIntervalSec: 15
+    port: 9095
+    type: HTTP
+    requestPath: /version
 ---
 apiVersion: networking.gke.io/v1beta2
 kind: ManagedCertificate

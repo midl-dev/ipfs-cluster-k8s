@@ -23,7 +23,7 @@ spec:
   type: NodePort
   ports:
     - name: cluster-gw
-      targetPort: proxy-http
+      targetPort: cluster-gw
       port: 9095
   selector:
     app: ipfs-cluster

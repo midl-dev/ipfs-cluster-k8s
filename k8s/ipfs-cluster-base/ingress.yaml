@@ -5,7 +5,7 @@ metadata:
 spec:
   backend:
     serviceName: ipfs-gw
-    servicePort: cluster-gw
+    servicePort: 9095
 ---
 apiVersion: networking.gke.io/v1beta2
 kind: ManagedCertificate

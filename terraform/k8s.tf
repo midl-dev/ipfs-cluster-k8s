@@ -6,9 +6,9 @@ locals {
 }
 
 # Provision IP for signer forwarder endpoint if there is at least one occurence of "authorized_signers" data in the bakers map
-resource "google_compute_address" "signer_forwarder_target" {
+resource "google_compute_address" "ipfs_p2p_target" {
   # it should not be more than one
-  name    = "${var.kubernetes_namespace}-signer-target"
+  name    = "${var.kubernetes_namespace}-ipfs-p2p-ip"
   region  = var.region
   project = var.project
 }
@@ -68,13 +68,11 @@ EOF
 
 # Provision IP for public rpc endpoint
 resource "google_compute_global_address" "public_rpc_ip" {
-  count = var.rpc_public_hostname == "" ? 0 : 1
   name    = "${var.kubernetes_namespace}-ipfs-rpc-ip"
   project = var.project
 }
 
 resource "google_compute_security_policy" "public_rpc_filter" {
-  count = var.rpc_public_hostname == "" ? 0 : 1
   name = "${var.kubernetes_namespace}-ipfs-rpc-filter"
   project = var.project
 
